@@ -10,3 +10,9 @@ export const newsInCategory = async(catagoryId) =>{
     const data = await res.json();
     return data.data;
 }
+
+export const newsDetailsIncategory = async(newsId) =>{
+    const res = await fetch (`https://openapi.programming-hero.com/api/news/${newsId}`);
+    const data = await res.json();
+    return data.data[0];
+}

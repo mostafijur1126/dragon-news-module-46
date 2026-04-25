@@ -18,7 +18,6 @@ const Leftside = ({ categories,isActive }) => {
             </li>
           })
         }
-
       </ul>
     </div>
   );

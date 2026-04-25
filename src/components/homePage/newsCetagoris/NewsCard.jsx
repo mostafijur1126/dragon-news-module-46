@@ -1,34 +1,31 @@
-import RightSite from '@/components/homePage/newsCetagoris/RightSite';
-import { newsDetailsIncategory } from '@/lib/Data';
-import React from 'react';
-import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
+import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import { FaEye, FaStar } from 'react-icons/fa';
 
-const NewsDetailsPage = async ({ params }) => {
-    const { id } = await params;
-    const news = await newsDetailsIncategory(id);
-    console.log(news);
+const NewsCard = ({ cetagoriNews }) => {
+    console.log(cetagoriNews);
     return (
-        <div className='max-w-7xl mx-auto grid grid-cols-12'>
-            <div className='col-span-9'>
-                <h2>Dragon News</h2>
-                <div>
-                    <div className='my-10'>
+        <div className="col-span-6">
+            <h2>Dragon News Home</h2>
+            <div> {cetagoriNews.length > 0 ? (
+
+                cetagoriNews.map(n => {
+                    return <div key={n._id} className='my-10'>
                         <div className="card bg-base-100 shadow-sm">
                             <div className="card-body">
                                 <div className='flex items-center justify-between bg-gray-100 p-5 rounded-md'>
                                     <div className='flex items-center gap-3'>
-                                        <Image alt={news.author?.name}
-                                            src={news.author?.img}
+                                        <Image alt={n.author?.name}
+                                            src={n.author?.img}
                                             width={50}
                                             height={50}
                                             className='rounded-full'
                                         ></Image>
                                         <div>
-                                            <h5>{news.author?.name}</h5>
-                                            <p>{news.author?.published_date}</p>
+                                            <h5>{n.author?.name}</h5>
+                                            <p>{n.author?.published_date}</p>
                                         </div>
                                     </div>
                                     <div className='flex items-center gap-3'>
@@ -36,33 +33,33 @@ const NewsDetailsPage = async ({ params }) => {
                                         <CiBookmark className='text-2xl' />
                                     </div>
                                 </div>
-                                <h2 className="card-title">{news.title}</h2>
+                                <h2 className="card-title">{n.title}</h2>
                                 <figure>
                                     <Image
-                                        src={news.image_url}
-                                        alt={news.title}
+                                        src={n.image_url}
+                                        alt={n.title}
                                         width={300}
                                         height={300}
                                         className='w-full'
                                     >
                                     </Image>
                                 </figure>
-                                <p className=''>{news.details}</p>
+                                <p className='line-clamp-3'>{n.details}</p>
                                 <div>
-                                    <Link href={`/category/${news.category_id}`}><button className='btn bg-red-500 text-white'>All news in this category</button></Link>
+                                    <Link href={`/news/${n._id}`}><button className='btn'>Read More</button></Link>
                                 </div>
-                                
+                                <div className='flex items-center justify-between'>
+                                    <span className='flex items-center gap-1 text-2xl'><FaStar />{n.rating.number}</span>
+                                    <span className='flex items-center gap-1 text-2xl'><FaEye />{n.total_view}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                })
+            ) : (<div>Not found news</div>)}
             </div>
-            <div className='col-span-3'>
-                <RightSite></RightSite>
-            </div>
-
         </div>
     );
 };
 
-export default NewsDetailsPage;
+export default NewsCard;
