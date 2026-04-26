@@ -1,13 +1,27 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginPage = () => {
-    const {register,handleSubmit} = useForm();
+    const { register, handleSubmit } = useForm();
+    const [showPassword, setShowPassword] = useState(false);
 
-    const formHendel = (data) => {
-        console.log(data);
+    const formHendel = async (data) => {
+        const { email, password} = data;
+        const { data: res, error } = await authClient.signIn.email({
+            email: email, // required
+            password: password, // required
+            callbackURL: "/",
+        });
+        if (res) {
+            alert("singIn successfull");
+        }
+        if (error) {
+            alert(error.message)
+        }
     }
     return (
         <div className='container mx-auto flex items-center justify-center h-[50vh] bg-gray-50'>
@@ -20,9 +34,10 @@ const LoginPage = () => {
                         <p className="validator-hint hidden">Required</p>
                     </fieldset>
 
-                    <label className="fieldset">
+                    <label className="fieldset relative">
                         <span className="label">Password</span>
-                        <input {...register("password")} type="password" className="input validator" placeholder="Password" required />
+                        <input {...register("password")} type={`${showPassword ? "text" : "password"}`} className="input validator" placeholder="Password" required />
+                        <span className='absolute top-11 right-5' onClick={()=>setShowPassword(!showPassword)}>{ showPassword ? <FaEye />:<FaEyeSlash />}</span>
                         <span className="validator-hint hidden">Required</span>
                     </label>
 

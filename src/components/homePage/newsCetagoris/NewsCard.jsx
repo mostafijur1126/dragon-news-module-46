@@ -5,7 +5,7 @@ import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import { FaEye, FaStar } from 'react-icons/fa';
 
 const NewsCard = ({ cetagoriNews }) => {
-    console.log(cetagoriNews);
+    // console.log(cetagoriNews);
     return (
         <div className="col-span-6">
             <h2>Dragon News Home</h2>
