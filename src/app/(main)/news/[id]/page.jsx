@@ -4,7 +4,15 @@ import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaEye, FaStar } from 'react-icons/fa';
+
+export const generateMetadata = async({params}) => {
+    const {id} = await params;
+    const news = await newsDetailsIncategory(id);
+    return {
+        title:news.title,
+        description: news.description,
+    }
+}
 
 const NewsDetailsPage = async ({ params }) => {
     const { id } = await params;

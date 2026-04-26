@@ -15,7 +15,7 @@ const NavbarSection = () => {
             </div>
             <div className='flex items-center gap-3'>
                 <Image src={userAvarer} alt='user avater' width={40} height={40}></Image>
-                <button className='btn bg-gray-800 text-white'>Login</button>
+                <Link href="/auth/login"><button className='btn bg-gray-800 text-white'>Login</button></Link>
             </div>
         </div>
     );
