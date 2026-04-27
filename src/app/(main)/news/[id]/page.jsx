@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { newsDetailsIncategory } from '@/lib/dbData';
 
 
-export const generateMetadata = async({params}) => {
-    const {id} = await params;
+export const generateMetadata = async ({ params }) => {
+    const { id } = await params;
     const news = await newsDetailsIncategory(id);
     return {
-        title:news.title,
+        title: news.title,
         description: news.description,
     }
 }
@@ -33,7 +33,7 @@ const NewsDetailsPage = async ({ params }) => {
                                             src={news.author?.img}
                                             width={50}
                                             height={50}
-                                            className='rounded-full'
+                                            className="w-[50px] h-[50px] rounded-full object-cover"
                                         ></Image>
                                         <div>
                                             <h5>{news.author?.name}</h5>
@@ -50,17 +50,16 @@ const NewsDetailsPage = async ({ params }) => {
                                     <Image
                                         src={news.image_url}
                                         alt={news.title}
-                                        width={300}
-                                        height={300}
-                                        className='w-full'
-                                    >
-                                    </Image>
+                                        width={800}
+                                        height={500}
+                                        className="w-full h-auto object-cover"
+                                    />
                                 </figure>
                                 <p className=''>{news.details}</p>
                                 <div>
                                     <Link href={`/category/${news.category_id}`}><button className='btn bg-red-500 text-white'>All news in this category</button></Link>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

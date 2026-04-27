@@ -21,7 +21,7 @@ const NewsCard = ({ cetagoriNews }) => {
                                             src={n.author?.img}
                                             width={50}
                                             height={50}
-                                            className='rounded-full'
+                                            className='w-[50px] h-[50px] rounded-full object-cover'
                                         ></Image>
                                         <div>
                                             <h5>{n.author?.name}</h5>
@@ -38,27 +38,26 @@ const NewsCard = ({ cetagoriNews }) => {
                                     <Image
                                         src={n.image_url}
                                         alt={n.title}
-                                        width={300}
-                                        height={300}
-                                        className='w-full'
-                                    >
-                                    </Image>
-                                </figure>
-                                <p className='line-clamp-3'>{n.details}</p>
-                                <div>
-                                    <Link href={`/news/${n._id}`}><button className='btn'>Read More</button></Link>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <span className='flex items-center gap-1 text-2xl'><FaStar />{n.rating.number}</span>
-                                    <span className='flex items-center gap-1 text-2xl'><FaEye />{n.total_view}</span>
-                                </div>
+                                        width={800}
+                                        height={500}
+                                        className="w-full h-auto object-cover"
+                                    />
+                            </figure>
+                            <p className='line-clamp-3'>{n.details}</p>
+                            <div>
+                                <Link href={`/news/${n._id}`}><button className='btn'>Read More</button></Link>
+                            </div>
+                            <div className='flex items-center justify-between'>
+                                <span className='flex items-center gap-1 text-2xl'><FaStar />{n.rating.number}</span>
+                                <span className='flex items-center gap-1 text-2xl'><FaEye />{n.total_view}</span>
                             </div>
                         </div>
                     </div>
+                    </div>
                 })
             ) : (<div>Not found news</div>)}
-            </div>
         </div>
+        </div >
     );
 };
 
