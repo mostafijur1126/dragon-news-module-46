@@ -12,7 +12,7 @@ const newsCetagoris = async ({ params }) => {
     const cetagoriNews = await newsInCategory(id);
     // console.log(cetagoriNews);
     return (
-        <div className="grid grid-cols-12 gap-4 container mx-auto my-10">
+        <div  className="grid grid-cols-12 gap-4 container mx-auto my-10">
             <Leftside categories={categories} isActive={id}></Leftside>
             <NewsCard cetagoriNews={cetagoriNews}></NewsCard>
             <RightSite></RightSite>
