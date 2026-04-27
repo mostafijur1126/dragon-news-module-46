@@ -14,11 +14,11 @@ const RightSite = () => {
     const data = await authClient.signIn.social({
       provider: "github"
     })
-    console.log(data,);
+    // console.log(data,);
   }
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
-  console.log(session,"user");
+  // console.log(session,"user");
   return (
     <div className=" col-span-3">
       <h1 className="font-bold text-xl">Login With</h1>
