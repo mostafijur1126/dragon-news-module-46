@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { newsDetailsIncategory } from '@/lib/data';
 
+
 export const generateMetadata = async({params}) => {
     const {id} = await params;
     const news = await newsDetailsIncategory(id);
