@@ -3,7 +3,7 @@ import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import Image from 'next/image';
 import Link from 'next/link';
-import { newsDetailsIncategory } from '@/lib/data';
+import { newsDetailsIncategory } from '@/lib/dbData';
 
 
 export const generateMetadata = async({params}) => {
