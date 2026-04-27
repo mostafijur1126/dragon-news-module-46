@@ -1,5 +1,5 @@
 import RightSite from '@/components/homePage/newsCetagoris/RightSite';
-import { newsDetailsIncategory } from '@/lib/Data';
+import { newsDetailsIncategory } from '@/lib/data';
 import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import Image from 'next/image';

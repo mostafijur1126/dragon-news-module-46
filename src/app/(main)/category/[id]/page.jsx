@@ -1,7 +1,7 @@
 import Leftside from '@/components/homePage/newsCetagoris/Leftside';
 import NewsCard from '@/components/homePage/newsCetagoris/NewsCard';
 import RightSite from '@/components/homePage/newsCetagoris/RightSite';
-import { getCategories, newsInCategory } from '@/lib/Data';
+import { getCategories, newsInCategory } from '@/lib/data';
 import React from 'react';
 
 
