@@ -1,9 +1,9 @@
 import RightSite from '@/components/homePage/newsCetagoris/RightSite';
-import { newsDetailsIncategory } from '@/lib/data';
 import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import Image from 'next/image';
 import Link from 'next/link';
+import { newsDetailsIncategory } from '@/lib/data';
 
 export const generateMetadata = async({params}) => {
     const {id} = await params;
